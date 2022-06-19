@@ -50,12 +50,12 @@ async def allowUser(c:Client, m: Message):
 	if passwd == Config.PASSWORD:
 		await database.allowUser(uid=m.from_user.id)
 		await m.reply_text(
-			text=f"**Login passed ✅**\n\n⚡ Now you can you me!!\n\n /Start here 🦊",
+			text=f"**Login passed ✅**\n\n⚡ Now you can you me!!\n\n /Start here 😇",
 			quote=True
 		)
 	else:
 		await m.reply_text(
-			text=f"**Login failed ❌**\n\n🛡️ Unfortunately you can't use me\n\n use below format 👇 \n/login VideoMergeDcBot\n\n❗Ask Password Here t.me/Dcstreambot/61",
+			text=f"**Login failed ❌**\n\n🛡️ Unfortunately you can't use me\n\n use below format 👇 \n/login @Prime_BotZ",
 			quote=True
 		)
 	return
@@ -111,12 +111,12 @@ async def start_handler(c: Client, m: Message):
 	await database.addUser(uid=m.from_user.id,fname=m.from_user.first_name, lname=m.from_user.last_name)
 	if await database.allowedUser(uid=m.from_user.id) is False:
 		res = await m.reply_text(
-			text=f"Hi **{m.from_user.first_name}**\n\n 🛡️ Unfortunately you can't use me\n\n use below format 👇 \n/login VideoMergeDcBot\n\n❗Ask Password Here t.me/Dcstreambot/61",
+			text=f"Hi **{m.from_user.first_name}**\n\n 🛡️ Unfortunately you can't use me\n\n use below format 👇 \n/login @Prime_BotZ\n\n",
 			quote=True
 		)
 		return
 	res = await m.reply_text(
-		text=f"Hi **{m.from_user.first_name}**\n\n ⚡ I am a file/video merger bot\n\n😎 I can merge Telegram files! and upload it to telegram or Drive \n\n⚠️ Some Bug in Merge in Drive.So Please Don't Use that. Use Telegram Merge✅. \n\n🦊 **Powered by @GroupDcBots** ",
+		text=f"Hi **{m.from_user.first_name}**\n\n ⚡ I am a file/video merger bot\n\n😎 I can merge Telegram files! and upload it to telegram\n\n🤖 **Powered by @Prime_BotZ** ",
 		quote=True
 	)
 
@@ -125,7 +125,7 @@ async def start_handler(c: Client, m: Message):
 async def video_handler(c: Client, m: Message):
 	if await database.allowedUser(uid=m.from_user.id) is False:
 		res = await m.reply_text(
-			text=f"Hi **{m.from_user.first_name}**\n\n 🛡️ Unfortunately you can't use me\n\n❗Ask Password Here @DcStreamBot",
+			text=f"Hi **{m.from_user.first_name}**\n\n 🛡️ Unfortunately you can't use me",
 			quote=True
 		)
 		return
@@ -158,11 +158,11 @@ async def video_handler(c: Client, m: Message):
 		queueDB.get(m.from_user.id)['subtitles'].append(None)
 
 		button = await MakeButtons(c,m,queueDB)
-		button.remove([InlineKeyboardButton("🔗 Merge Now", callback_data="merge")])
+		button.remove([InlineKeyboardButton("🔗 ᴍᴇʀɢᴇ ɴᴏᴡ", callback_data="merge")])
 		button.remove([InlineKeyboardButton("💥 Clear Files", callback_data="cancel")])
 
-		button.append([InlineKeyboardButton("🔗 Merge Subtitles", callback_data="mergeSubtitles")])
-		button.append([InlineKeyboardButton("💥 Clear Files", callback_data="cancel")])
+		button.append([InlineKeyboardButton("🔗 ᴍᴇʀɢᴇ sᴜʙᴛɪᴛʟᴇs", callback_data="mergeSubtitles")])
+		button.append([InlineKeyboardButton("💥 ᴄʟᴇᴀʀ ғɪʟᴇs", callback_data="cancel")])
 		await m.reply_text(
 			text="You send a subtitle file. Do you want to merge it?",
 			quote=True,
@@ -215,7 +215,7 @@ async def video_handler(c: Client, m: Message):
 async def photo_handler(c: Client,m: Message):
 	if await database.allowedUser(uid=m.from_user.id) is False:
 		res = await m.reply_text(
-			text=f"Hi **{m.from_user.first_name}**\n\n 🛡️ Unfortunately you can't use me\n\n❗Ask Password Here @DcStreamBot",
+			text=f"Hi **{m.from_user.first_name}**\n\n 🛡️ Unfortunately you can't use me",
 			quote=True
 		)
 		return
@@ -245,7 +245,7 @@ async def help_msg(c: Client, m: Message):
 		reply_markup=InlineKeyboardMarkup(
 			[
 				[
-					InlineKeyboardButton("Close 🔐", callback_data="close")
+					InlineKeyboardButton("ᴄʟᴏsᴇ 🔐", callback_data="close")
 				]
 			]
 		)
@@ -269,11 +269,11 @@ async def about_handler(c:Client,m:Message):
 		reply_markup=InlineKeyboardMarkup(
 			[
 				[
-					InlineKeyboardButton("🔰 Updates Channel 🔰", url="https://t.me/groupdcbots")
+					InlineKeyboardButton("🔰 ᴜᴘᴅᴀᴛᴇs ᴄʜᴀɴɴᴇʟ 🔰", url="https://t.me/groupdcbots")
 				],
 				[
-					InlineKeyboardButton("Source Code", url="https://github.com/selfie-bd/MERGEDcBOT"),
-					InlineKeyboardButton("Deployed By", url=f"https://t.me/{Config.OWNER_USERNAME}")
+					InlineKeyboardButton("sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ", url="https://github.com/selfie-bd/MERGEDcBOT"),
+					InlineKeyboardButton("ᴄʀᴇᴀᴛᴇᴅ ʙʏ", url=f"https://t.me/{Config.OWNER_USERNAME}")
 				]
 			]
 		)
@@ -313,10 +313,10 @@ async def callback(c: Client, cb: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton('📤 To Telegram', callback_data = 'to_telegram'),
-						InlineKeyboardButton('🌫️ To Drive', callback_data = 'to_drive')
+						InlineKeyboardButton('📤 ᴛᴏ ᴛᴇʟᴇɢʀᴀᴍ', callback_data = 'to_telegram'),
+						InlineKeyboardButton('🌫️ ᴛᴏ ᴅʀɪᴠᴇ', callback_data = 'to_drive')
 					],
-					[InlineKeyboardButton("⛔ Cancel ⛔", callback_data="cancel")]
+					[InlineKeyboardButton("⛔ ᴄᴀɴᴄᴇʟ ⛔", callback_data="cancel")]
 				]
 			)
 		)
@@ -329,8 +329,8 @@ async def callback(c: Client, cb: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton('🎞️ Video', callback_data='videoS'),
-						InlineKeyboardButton('📁 File', callback_data='documentS')
+						InlineKeyboardButton('🎞️ ᴠɪᴅᴇᴏ', callback_data='videoS'),
+						InlineKeyboardButton('📁 ғɪʟᴇ', callback_data='documentS')
 					],
 					[InlineKeyboardButton("⛔ Cancel ⛔", callback_data="cancel")]
 				]
@@ -356,10 +356,10 @@ async def callback(c: Client, cb: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton('👆 Default', callback_data='rename_NO'),
-						InlineKeyboardButton('✍️ Rename', callback_data='rename_YES')
+						InlineKeyboardButton('👆 ᴅᴇғᴀᴜʟᴛ', callback_data='rename_NO'),
+						InlineKeyboardButton('✍️ ʀᴇɴᴀᴍᴇ', callback_data='rename_YES')
 					],
-					[InlineKeyboardButton("⛔ Cancel ⛔", callback_data="cancel")]
+					[InlineKeyboardButton("⛔ ᴄᴀɴᴄᴇʟ ⛔", callback_data="cancel")]
 				]
 			)
 		)
@@ -372,10 +372,10 @@ async def callback(c: Client, cb: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton('🎞️ Video', callback_data='video'),
-						InlineKeyboardButton('📁 File', callback_data='document')
+						InlineKeyboardButton('🎞️ ᴠɪᴅᴇᴏ', callback_data='video'),
+						InlineKeyboardButton('📁 ғɪʟᴇ', callback_data='document')
 					],
-					[InlineKeyboardButton("⛔ Cancel ⛔", callback_data="cancel")]
+					[InlineKeyboardButton("⛔ ᴄᴀɴᴄᴇʟ ⛔", callback_data="cancel")]
 				]
 			)
 		)
@@ -388,10 +388,10 @@ async def callback(c: Client, cb: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton('👆 Default', callback_data='rename_NO'),
-						InlineKeyboardButton('✍️ Rename', callback_data='rename_YES')
+						InlineKeyboardButton('👆 ᴅᴇғᴀᴜʟᴛ', callback_data='rename_NO'),
+						InlineKeyboardButton('✍️ ʀᴇɴᴀᴍᴇ', callback_data='rename_YES')
 					],
-					[InlineKeyboardButton("⛔ Cancel ⛔", callback_data="cancel")]
+					[InlineKeyboardButton("⛔ ᴄᴀɴᴄᴇʟ ⛔", callback_data="cancel")]
 				]
 			)
 		)
@@ -404,10 +404,10 @@ async def callback(c: Client, cb: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton('👆 Default', callback_data='rename_NO'),
-						InlineKeyboardButton('✍️ Rename', callback_data='rename_YES')
+						InlineKeyboardButton('👆 ᴅᴇғᴀᴜʟᴛ', callback_data='rename_NO'),
+						InlineKeyboardButton('✍️ ʀᴇɴᴀᴍᴇ', callback_data='rename_YES')
 					],
-					[InlineKeyboardButton("⛔ Cancel ⛔", callback_data="cancel")]
+					[InlineKeyboardButton("⛔ ᴄᴀɴᴄᴇʟ ⛔", callback_data="cancel")]
 				]
 			)
 		)
@@ -420,10 +420,10 @@ async def callback(c: Client, cb: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton('👆 Default', callback_data='renameS_NO'),
-						InlineKeyboardButton('✍️ Rename', callback_data='renameS_YES')
+						InlineKeyboardButton('👆 ᴅᴇғᴀᴜʟᴛ', callback_data='renameS_NO'),
+						InlineKeyboardButton('✍️ ʀᴇɴᴀᴍᴇ', callback_data='renameS_YES')
 					],
-					[InlineKeyboardButton("⛔ Cancel ⛔", callback_data="cancel")]
+					[InlineKeyboardButton("⛔ ᴄᴀɴᴄᴇʟ ⛔", callback_data="cancel")]
 				]
 			)
 		)
@@ -436,10 +436,10 @@ async def callback(c: Client, cb: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton('👆 Default', callback_data='renameS_NO'),
-						InlineKeyboardButton('✍️ Rename', callback_data='renameS_YES')
+						InlineKeyboardButton('👆 ᴅᴇғᴀᴜʟᴛ', callback_data='renameS_NO'),
+						InlineKeyboardButton('✍️ ʀᴇɴᴀᴍᴇ', callback_data='renameS_YES')
 					],
-					[InlineKeyboardButton("⛔ Cancel ⛔", callback_data="cancel")]
+					[InlineKeyboardButton("⛔ ᴄᴀɴᴄᴇʟ ⛔", callback_data="cancel")]
 				]
 			)
 		)
@@ -531,10 +531,10 @@ async def callback(c: Client, cb: CallbackQuery):
 					reply_markup=InlineKeyboardMarkup(
 						[
 							[
-								InlineKeyboardButton("❌ Remove",callback_data=f"removeFile_{str(m.message_id)}"),
-								InlineKeyboardButton("📜 Add Subtitle", callback_data=f"addSub_{str(sIndex)}")
+								InlineKeyboardButton("❌ ʀᴇᴍᴏᴠᴇ",callback_data=f"removeFile_{str(m.message_id)}"),
+								InlineKeyboardButton("📜 ᴀᴅᴅ sᴜʙᴛɪᴛʟᴇ", callback_data=f"addSub_{str(sIndex)}")
 							],
-							[InlineKeyboardButton("🔙 Back", callback_data="back")]
+							[InlineKeyboardButton("🔙 ʙᴀᴄᴋ", callback_data="back")]
 						]
 					)
 				)
@@ -544,10 +544,10 @@ async def callback(c: Client, cb: CallbackQuery):
 					reply_markup=InlineKeyboardMarkup(
 						[
 							[
-								InlineKeyboardButton("❌ Remove",callback_data=f"removeFile_{str(m.message_id)}"),
-								InlineKeyboardButton("📜 Add Subtitle", callback_data=f"addSub_{str(sIndex)}")
+								InlineKeyboardButton("❌ ʀᴇᴍᴏᴠᴇ",callback_data=f"removeFile_{str(m.message_id)}"),
+								InlineKeyboardButton("📜 ᴀᴅᴅ sᴜʙᴛɪᴛʟᴇ", callback_data=f"addSub_{str(sIndex)}")
 							],
-							[InlineKeyboardButton("🔙 Back", callback_data="back")]
+							[InlineKeyboardButton("🔙 ʙᴀᴄᴋ", callback_data="back")]
 						]
 					)
 				)
@@ -561,10 +561,10 @@ async def callback(c: Client, cb: CallbackQuery):
 					reply_markup=InlineKeyboardMarkup(
 						[
 							[
-								InlineKeyboardButton("❌ Remove File",callback_data=f"removeFile_{str(m.message_id)}"),
-								InlineKeyboardButton("❌ Remove Subtitle", callback_data=f"removeSub_{str(sIndex)}")
+								InlineKeyboardButton("❌ ʀᴇᴍᴏᴠᴇ ғɪʟᴇ",callback_data=f"removeFile_{str(m.message_id)}"),
+								InlineKeyboardButton("❌ ʀᴇᴍᴏᴠᴇ sᴜʙᴛɪᴛʟᴇ", callback_data=f"removeSub_{str(sIndex)}")
 							],
-							[InlineKeyboardButton("🔙 Back", callback_data="back")]
+							[InlineKeyboardButton("🔙 ʙᴀᴄᴋ", callback_data="back")]
 						]
 					)
 				)
@@ -574,10 +574,10 @@ async def callback(c: Client, cb: CallbackQuery):
 					reply_markup=InlineKeyboardMarkup(
 						[
 							[
-								InlineKeyboardButton("❌ Remove File",callback_data=f"removeFile_{str(m.message_id)}"),
-								InlineKeyboardButton("❌ Remove Subtitle", callback_data=f"removeSub_{str(sIndex)}")
+								InlineKeyboardButton("❌ ʀᴇᴍᴏᴠᴇ ғɪʟᴇ",callback_data=f"removeFile_{str(m.message_id)}"),
+								InlineKeyboardButton("❌ ʀᴇᴍᴏᴠᴇ sᴜʙᴛɪᴛʟᴇ", callback_data=f"removeSub_{str(sIndex)}")
 							],
-							[InlineKeyboardButton("🔙 Back", callback_data="back")]
+							[InlineKeyboardButton("🔙 ʙᴀᴄᴋ", callback_data="back")]
 						]
 					)
 				)
@@ -589,7 +589,7 @@ async def callback(c: Client, cb: CallbackQuery):
 		rmess = await cb.message.edit(text=f"Send me a subtitle file, you have 1 minute",
 			reply_markup=InlineKeyboardMarkup(
 				[
-					[InlineKeyboardButton("🔙 Back", callback_data=f"showFileName_{vMessId}")]
+					[InlineKeyboardButton("🔙 ʙᴀᴄᴋ", callback_data=f"showFileName_{vMessId}")]
 				]
 			)
 		)
@@ -600,7 +600,7 @@ async def callback(c: Client, cb: CallbackQuery):
 				await subs.reply_text(text=f"Please go back first",
 					reply_markup=InlineKeyboardMarkup(
 						[
-							[InlineKeyboardButton("🔙 Back", callback_data=f"showFileName_{vMessId}")]
+							[InlineKeyboardButton("🔙 ʙᴀᴄᴋ", callback_data=f"showFileName_{vMessId}")]
 						]
 					),
 					quote=True
@@ -610,7 +610,7 @@ async def callback(c: Client, cb: CallbackQuery):
 			await subs.reply_text(f"Added {subs.document.file_name}",
 				reply_markup=InlineKeyboardMarkup(
 					[
-						[InlineKeyboardButton("🔙 Back", callback_data=f"showFileName_{vMessId}")]
+						[InlineKeyboardButton("🔙 ʙᴀᴄᴋ", callback_data=f"showFileName_{vMessId}")]
 					]
 				),
 				quote=True
@@ -626,7 +626,7 @@ async def callback(c: Client, cb: CallbackQuery):
 		await cb.message.edit(text=f"Subtitle Removed Now go back or send next video",
 			reply_markup=InlineKeyboardMarkup(
 				[
-					[InlineKeyboardButton("🔙 Back", callback_data=f"showFileName_{vMessId}")]
+					[InlineKeyboardButton("🔙 ʙᴀᴄᴋ", callback_data=f"showFileName_{vMessId}")]
 				]
 			)
 		)
@@ -658,7 +658,7 @@ async def mergeSub(c:Client,cb:CallbackQuery,new_file_name:str):
 	print()
 	omess = cb.message.reply_to_message
 	vid_list = list()
-	await cb.message.edit('⭕ Processing...🦊')
+	await cb.message.edit('⭕ Processing...')
 	duration = 0
 	list_message_ids = queueDB.get(cb.from_user.id)["videos"]
 	list_message_ids.sort()
@@ -963,8 +963,8 @@ async def MakeButtons(bot: Client, m: Message, db: dict):
 			continue
 		else:
 			markup.append([InlineKeyboardButton(f"{media.file_name}", callback_data=f"showFileName_{i.message_id}")])
-	markup.append([InlineKeyboardButton("🔗 Merge Now", callback_data="merge")])
-	markup.append([InlineKeyboardButton("💥 Clear Files", callback_data="cancel")])
+	markup.append([InlineKeyboardButton("🔗 ᴍᴇʀɢᴇ ɴᴏᴡ", callback_data="merge")])
+	markup.append([InlineKeyboardButton("💥 ᴄʟᴇᴀʀ ғɪʟᴇs", callback_data="cancel")])
 	return markup
 
 
